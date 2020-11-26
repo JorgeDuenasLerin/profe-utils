@@ -48,10 +48,10 @@ while pregunta:
     fpreguntas.readline()
 
     pregunta_gift = "::{0}::[html]{1}{2}{{\n".format(pregunta, cuerpo, carga_imagen(img))
-    pregunta_gift += "=<p>{0}<p>\n".format(op1)
-    pregunta_gift += "~%-33.33333%<p>{0}<p>\n".format(op2)
-    pregunta_gift += "~%-33.33333%<p>{0}<p>\n".format(op3)
-    pregunta_gift += "~%-33.33333%<p>{0}<p>\n".format(op4)
+    pregunta_gift += "=<p>{0}</p>\n".format(op1)
+    pregunta_gift += "~%-33.33333%<p>{0}</p>\n".format(op2)
+    pregunta_gift += "~%-33.33333%<p>{0}</p>\n".format(op3)
+    pregunta_gift += "~%-33.33333%<p>{0}</p>\n".format(op4)
     pregunta_gift += "}}\n\n".format(op4)
 
     print(pregunta_gift)
