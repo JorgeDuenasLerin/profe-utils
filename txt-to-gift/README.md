@@ -1,6 +1,6 @@
-# HojaDeCálculo a Moodle
+# TXT a Moodle
 
-Herramienta para poder configurar de forma sencilla preguntas moodle.
+Herramienta para poder configurar de forma sencilla preguntas Moodle.
 
 Las preguntas podrán contener código fuente ya que **escapa** los caracteres **HTML** y los caracteres **especiales de Moodle**.
 
