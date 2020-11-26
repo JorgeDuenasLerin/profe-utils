@@ -32,17 +32,15 @@ Cue...
 Ejecución:
 
 ```
-[folen:~/Workspace … ls/txt-to-gift] main(+0/-7)* ±
->./txt-to-gift.py
+$ ./txt-to-gift.py
 usage: simple_example [-h] categoria fichero_preguntas
-simple_example: error: the following arguments are required: categoria, fichero_preguntas
+txt-to-gift: error: the following arguments are required: categoria, fichero_preguntas
 ```
 
 Para generar el fichero GIFT (Luego se importa en Moodle):
 
 ```
-[folen:~/Workspace … ls/txt-to-gift] main(+0/-7)* 2 ±
->./txt-to-gift.py test ejemplo.txt > ejemplo.gift
+$ ./txt-to-gift.py test ejemplo.txt > ejemplo.gift
 ```
 
 Ahora podrás importar el fichero Moodle sin problema.

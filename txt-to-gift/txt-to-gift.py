@@ -7,7 +7,7 @@ import html
 import re
 import base64
 
-parser = argparse.ArgumentParser("simple_example")
+parser = argparse.ArgumentParser("txt-to-gift")
 parser.add_argument("categoria", help="Categoría para las preguntas Moodle.", type=str)
 parser.add_argument("fichero_preguntas", help="Fichero txt con las preguntas.", type=str)
 args = parser.parse_args()
