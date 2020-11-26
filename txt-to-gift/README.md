@@ -45,4 +45,6 @@ Para generar el fichero GIFT (Luego se importa en Moodle):
 >./txt-to-gift.py test ejemplo.txt > ejemplo.gift
 ```
 
-Ahora podrás importar el fichero Moodle sin problema
+Ahora podrás importar el fichero Moodle sin problema.
+
+![imgs/PreguntaSubida.png](imgs/PreguntaSubida.png)
