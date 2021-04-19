@@ -9,8 +9,14 @@ class Acceso(models.Model):
     def __str__(self):
         return self.clave
 
-class Incidencia(models.Model):
+class Lugar(models.Model):
     lugar = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.lugar
+
+class Incidencia(models.Model):
+    lugar = models.ForeignKey(Lugar, on_delete=models.CASCADE)
     texto = models.TextField()
     ESTADOS = [
         ('A', 'Abierta'),
@@ -26,7 +32,7 @@ class Incidencia(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.lugar + ' ' + self.estado + ' ' + self.created_at.strftime('%Y-%m-%d %H:%M')
+        return self.lugar.__str__() + ' ' + self.estado + ' ' + self.created_at.strftime('%Y-%m-%d %H:%M')
 
 class Respuesta(models.Model):
     incidencia = models.ForeignKey(Incidencia, on_delete=models.CASCADE)
@@ -35,4 +41,4 @@ class Respuesta(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.incidencia.lugar + ' - ' + self.updated_at.strftime('%Y-%m-%d %H:%M')
+        return self.incidencia.__str__() + ' - Respuesta ' + self.updated_at.strftime('%Y-%m-%d %H:%M')

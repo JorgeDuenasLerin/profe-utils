@@ -2,9 +2,10 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Acceso, Incidencia, Respuesta
+from .models import Acceso, Lugar, Incidencia, Respuesta
 
 admin.site.register(Acceso)
+admin.site.register(Lugar)
 admin.site.register(Respuesta)
 
 
