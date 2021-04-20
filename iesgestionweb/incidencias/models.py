@@ -19,6 +19,7 @@ class Incidencia(models.Model):
     lugar = models.ForeignKey(Lugar, on_delete=models.CASCADE)
     texto = models.TextField()
     ESTADOS = [
+        ('R', 'Revisión'),
         ('A', 'Abierta'),
         ('C', 'Cerrada'),
         ('P', 'SinSolución'),
@@ -26,13 +27,13 @@ class Incidencia(models.Model):
     estado = models.CharField(
         max_length=2,
         choices=ESTADOS,
-        default='A',
+        default='R',
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.lugar.__str__() + ' ' + self.estado + ' ' + self.created_at.strftime('%Y-%m-%d %H:%M')
+        return self.lugar.__str__() + ' ' + self.get_estado_display() + ' ' + self.created_at.strftime('%Y-%m-%d %H:%M')
 
 class Respuesta(models.Model):
     incidencia = models.ForeignKey(Incidencia, on_delete=models.CASCADE)
