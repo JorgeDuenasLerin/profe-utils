@@ -55,7 +55,7 @@ ROOT_URLCONF = 'iesgestionweb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['iesgestionweb/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
