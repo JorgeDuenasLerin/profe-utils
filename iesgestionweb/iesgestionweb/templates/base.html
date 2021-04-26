@@ -1,8 +1,17 @@
+{# Load the tag library #}
+{% load bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>{% block title %}Gestión incidencias Jorge Dueñas Lerín{% endblock %}</title>
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
   </head>
   <body>
     <div id="content">

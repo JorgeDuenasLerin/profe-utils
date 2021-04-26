@@ -3,5 +3,30 @@
 {% block title %}Gestión incidencias Jorge Dueñas Lerín{% endblock %}
 
 {% block content %}
-<h1>Hola mundo!</h1>
+<h1>Sistema de gestión de incidencias</h1>
+
+<script type="text/javascript">
+  fucntion cambioLugar(e){
+    form = document.getElementById('formSeleccionLugar')
+    console.log(e)
+  }
+</script>
+
+<form class="row g-3" action="/" id="formSeleccionLugar">
+  <div class="col-6 form-floating">
+    <select class="form-select" id="floatingAula">
+      <option>Todos</option>
+      {% for lugar in lugares %}
+         <option value="{{aula.id}}"
+             {% if lugar.id == lugar_id %}selected="selected"{% endif %}>
+             {{lugar.lugar|capfirst}}
+         </option>
+      {% endfor %}
+    </select>
+    <label for="floatingAula">Selecciona aula</label>
+  </div>
+  <div class="col-6">
+    <button type="submit" class="btn btn-primary col">Ver incidencias</button>
+  </div>
+</form>
 {% endblock %}
