@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from . import views
 
@@ -7,7 +7,8 @@ app_name = 'incidencias' # Para espacio de nombres url... 'incidencias:index'
 
 urlpatterns = [
     # ex: /polls/
-    path('', views.index, name='index'),
+    #re_path(r'^incidencia/(?:/(?P<lugar_id>\d+))?/?$', views.index, name='listado'),
+    re_path(r'^(?:(?P<lugar_id>\d+)/?)?$', views.index, name='listado'),
 ]
 """
 # ex: /polls/5/

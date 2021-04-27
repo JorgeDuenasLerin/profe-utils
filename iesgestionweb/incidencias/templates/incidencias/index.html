@@ -6,24 +6,34 @@
 <h1>Sistema de gestión de incidencias</h1>
 
 <script type="text/javascript">
-  fucntion cambioLugar(e){
+  window.onload = function(){
     form = document.getElementById('formSeleccionLugar')
-    console.log(e)
+    select = document.getElementById('floatingLugar')
+    select.onchange = function(e){
+      var url = '{% url 'incidencias:listado' %}'
+      if (select.value == -1){
+        alert('todas')
+      } else {
+        alert(select.value)
+      }
+      console.log(e)
+      debugger
+    };
   }
 </script>
 
 <form class="row g-3" action="/" id="formSeleccionLugar">
   <div class="col-6 form-floating">
-    <select class="form-select" id="floatingAula">
-      <option>Todos</option>
+    <select class="form-select" id="floatingLugar">
+      <option value="-1">Todos</option>
       {% for lugar in lugares %}
-         <option value="{{aula.id}}"
+         <option value="{{lugar.id}}"
              {% if lugar.id == lugar_id %}selected="selected"{% endif %}>
              {{lugar.lugar|capfirst}}
          </option>
       {% endfor %}
     </select>
-    <label for="floatingAula">Selecciona aula</label>
+    <label for="floatingLugar">Selecciona aula</label>
   </div>
   <div class="col-6">
     <button type="submit" class="btn btn-primary col">Ver incidencias</button>
