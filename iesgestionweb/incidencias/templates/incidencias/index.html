@@ -4,31 +4,15 @@
 
 {% block content %}
 <h1>Sistema de gestión de incidencias</h1>
-
-<script type="text/javascript">
-  window.onload = function(){
-    form = document.getElementById('formSeleccionLugar')
-    select = document.getElementById('floatingLugar')
-    select.onchange = function(e){
-      var url = '{% url 'incidencias:listado' %}'
-      if (select.value == -1){
-        alert('todas')
-      } else {
-        alert(select.value)
-      }
-      console.log(e)
-      debugger
-    };
-  }
-</script>
+<h2>{{ lugar_text }}</h2>
 
 <form class="row g-3" action="/" id="formSeleccionLugar">
   <div class="col-6 form-floating">
-    <select class="form-select" id="floatingLugar">
-      <option value="-1">Todos</option>
+    <select class="form-select" id="floatingLugar" name="lugar">
+      <option value="">Todos</option>
       {% for lugar in lugares %}
-         <option value="{{lugar.id}}"
-             {% if lugar.id == lugar_id %}selected="selected"{% endif %}>
+         <option value="{{ lugar.id }}"
+             {% if lugar.id == lugar_selected.id %}selected="selected"{% endif %}>
              {{lugar.lugar|capfirst}}
          </option>
       {% endfor %}
