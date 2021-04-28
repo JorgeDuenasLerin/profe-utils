@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load render_table from django_tables2 %}
 
 {% block title %}Gestión incidencias Jorge Dueñas Lerín{% endblock %}
 
@@ -23,4 +24,6 @@
     <button type="submit" class="btn btn-primary col">Ver incidencias</button>
   </div>
 </form>
+
+{% render_table object_list %}
 {% endblock %}

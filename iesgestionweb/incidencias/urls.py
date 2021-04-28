@@ -8,7 +8,8 @@ app_name = 'incidencias' # Para espacio de nombres url... 'incidencias:index'
 urlpatterns = [
     # ex: /polls/
     #re_path(r'^incidencia/(?:/(?P<lugar_id>\d+))?/?$', views.index, name='listado'),
-    path('', views.index, name='listado'),
+    #path('', views.index, name='listado'),
+    path('', views.IncidenciaListView.as_view(), name='listado'),
 ]
 """
 # ex: /polls/5/

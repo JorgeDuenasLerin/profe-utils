@@ -1,19 +1,43 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView
 from .models import Lugar, Incidencia, Respuesta, Acceso
+from .tables import IncidenciaTable
+from django_tables2.views import SingleTableView
 
-def index(request):
-    try:
-        lugar_id = int(request.GET.get('lugar', ''))
-    except:
-        lugar_id = 0
-    lugar_selected = Lugar.objects.filter(pk=lugar_id).first()
-    lugar_text = "Todas" if lugar_selected is None else lugar_selected.lugar
+from django_filters.views import FilterView
+from django_tables2.views import SingleTableMixin
 
-    context = {
-        'lugar_selected': lugar_selected,
-        'lugar_text': lugar_text,
-        'lugares': Lugar.objects.all(),
-        'incidencias': Incidencia.objects.all()
-    }
-    return render(request, 'incidencias/index.html', context)
+
+
+
+"""
+class FilteredPersonListView(SingleTableMixin, FilterView):
+    table_class = PersonTable
+    model = Person
+    template_name = "template.html"
+
+    filterset_class = PersonFilter
+"""
+
+class IncidenciaListView(SingleTableView):
+
+    model = Incidencia
+    table_class = IncidenciaTable
+    template_name = 'incidencias/index.html'
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+
+        try:
+            lugar_id = int(self.request.GET.get('lugar', ''))
+        except:
+            lugar_id = 0
+        lugar_selected = Lugar.objects.filter(pk=lugar_id).first()
+        lugar_text = "Todas" if lugar_selected is None else lugar_selected.lugar
+
+        context['lugar_selected'] = lugar_selected
+        context['lugar_text'] = lugar_text
+        context['lugares'] = Lugar.objects.all()
+
+        return context

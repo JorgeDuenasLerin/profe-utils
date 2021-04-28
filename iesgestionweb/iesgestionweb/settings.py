@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'django_extensions',
+    'django_tables2',
+    'django_filters',
 ]
 
+DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap4.html'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
