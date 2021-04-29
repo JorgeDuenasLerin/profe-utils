@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load render_table from django_tables2 %}
+{% load bootstrap5 %}
 
 {% block title %}Gestión incidencias Jorge Dueñas Lerín{% endblock %}
 
@@ -24,6 +25,14 @@
     <button type="submit" class="btn btn-primary col">Ver incidencias</button>
   </div>
 </form>
+
+{% if filter %}
+    <form action="" method="get" class="form form-inline">
+        {% bootstrap_form filter.form layout='inline' %}
+        {% bootstrap_button 'Ver Incidencias' %}
+        {% bootstrap_button content='Nueva incidencia' href='http://www.google.es' %}
+    </form>
+{% endif %}
 
 {% render_table object_list %}
 {% endblock %}
