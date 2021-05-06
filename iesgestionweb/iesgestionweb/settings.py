@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap4.html'
+FILTERS_EMPTY_CHOICE_LABEL="Todas"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

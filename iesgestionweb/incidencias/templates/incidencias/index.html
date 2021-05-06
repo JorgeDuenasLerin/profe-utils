@@ -7,6 +7,7 @@
 {% block content %}
 <h1>Sistema de gestión de incidencias</h1>
 
+<!---
 <form class="row g-3" action="/" id="formSeleccionLugar">
   <div class="form-floating">
     <select class="form-select" id="floatingLugar" name="lugar">
@@ -23,7 +24,17 @@
   <div class="">
     <button type="submit" class="btn btn-primary col">Ver incidencias</button>
   </div>
-</form>
 
-{% render_table object_list %}
+</form>
+--->
+{% if filter %}
+    <form action="" method="get" class="form form-inline">
+      <div class="form-floating">
+        {% bootstrap_form filter.form layout='inline' %}
+        {% bootstrap_button 'Ver incidencias' %}
+    </form>
+    </div>
+{% endif %}
+
+{% render_table table %}
 {% endblock %}
