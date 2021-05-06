@@ -6,10 +6,9 @@
 
 {% block content %}
 <h1>Sistema de gestión de incidencias</h1>
-<h2>{{ lugar_text }}</h2>
 
 <form class="row g-3" action="/" id="formSeleccionLugar">
-  <div class="col-6 form-floating">
+  <div class="form-floating">
     <select class="form-select" id="floatingLugar" name="lugar">
       <option value="">Todos</option>
       {% for lugar in lugares %}
@@ -21,18 +20,10 @@
     </select>
     <label for="floatingLugar">Selecciona aula</label>
   </div>
-  <div class="col-6">
+  <div class="">
     <button type="submit" class="btn btn-primary col">Ver incidencias</button>
   </div>
 </form>
-
-{% if filter %}
-    <form action="" method="get" class="form form-inline">
-        {% bootstrap_form filter.form layout='inline' %}
-        {% bootstrap_button 'Ver Incidencias' %}
-        {% bootstrap_button content='Nueva incidencia' href='http://www.google.es' %}
-    </form>
-{% endif %}
 
 {% render_table object_list %}
 {% endblock %}

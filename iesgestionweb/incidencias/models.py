@@ -36,7 +36,7 @@ class Incidencia(models.Model):
         return self.lugar.__str__() + ' ' + self.get_estado_display() + ' ' + self.created_at.strftime('%Y-%m-%d %H:%M')
 
 class Respuesta(models.Model):
-    incidencia = models.ForeignKey(Incidencia, on_delete=models.CASCADE)
+    incidencia = models.ForeignKey(Incidencia, on_delete=models.CASCADE, related_name='respuestas')
     texto = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
