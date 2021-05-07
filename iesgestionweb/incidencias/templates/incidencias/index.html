@@ -32,8 +32,12 @@
       <div class="form-floating">
         {% bootstrap_form filter.form layout='inline' %}
         {% bootstrap_button 'Ver incidencias' %}
+        <a type="button" class="btn btn-success" href={% url 'incidencias:nueva-incidencia' %}>
+          Nueva incidencia
+        </a>
+      </div>
     </form>
-    </div>
+
 {% endif %}
 
 {% render_table table %}

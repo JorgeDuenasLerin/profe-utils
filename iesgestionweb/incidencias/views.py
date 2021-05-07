@@ -3,22 +3,12 @@ from django.http import HttpResponse
 from django.views.generic import ListView
 from .models import Lugar, Incidencia, Respuesta, Acceso
 from .tables import IncidenciaTable, IncidenciaFilter
+from .forms import IncidenciaForm
 from django_tables2.views import SingleTableView
 
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
-
-
-
-
-"""
-class FilteredPersonListView(SingleTableMixin, FilterView):
-    table_class = PersonTable
-    model = Person
-    template_name = "template.html"
-
-    filterset_class = PersonFilter
-"""
+from django.views.generic.edit import FormView
 
 class IncidenciaListView(SingleTableMixin, FilterView):
 
@@ -40,3 +30,17 @@ class IncidenciaListView(SingleTableMixin, FilterView):
         context['lugares'] = Lugar.objects.all()
 
         return context
+
+
+class IncidenciaFormView(FormView):
+    template_name = 'incidencias/incidencia.html'
+    form_class = IncidenciaForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        #form.send_email()
+        
+
+        return super().form_valid(form)

@@ -10,6 +10,7 @@ urlpatterns = [
     #re_path(r'^incidencia/(?:/(?P<lugar_id>\d+))?/?$', views.index, name='listado'),
     #path('', views.index, name='listado'),
     path('', views.IncidenciaListView.as_view(), name='listado'),
+    path('nueva/', views.IncidenciaFormView.as_view(), name='nueva-incidencia'),
 ]
 """
 # ex: /polls/5/

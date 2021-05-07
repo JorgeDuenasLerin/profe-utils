@@ -16,5 +16,8 @@ class RespuestaInline(admin.TabularInline):
 
 class IncidenciaAdmin(admin.ModelAdmin):
     inlines = [RespuestaInline]
+    list_display = ('id', 'lugar', 'texto', 'estado', 'created_at')
+    list_filter = ('estado', 'lugar')
+    date_hierarchy = 'created_at'
 
 admin.site.register(Incidencia, IncidenciaAdmin)
