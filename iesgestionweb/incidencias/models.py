@@ -17,17 +17,15 @@ class Lugar(models.Model):
 
 class Incidencia(models.Model):
     lugar = models.ForeignKey(Lugar, on_delete=models.CASCADE)
-    texto = models.TextField()
+    texto = models.TextField(verbose_name='problema')
     ESTADOS = [
-        ('R', 'Revisión'),
         ('A', 'Abierta'),
         ('C', 'Cerrada'),
-        ('P', 'SinSolución'),
     ]
     estado = models.CharField(
         max_length=2,
         choices=ESTADOS,
-        default='R',
+        default='A',
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -36,7 +34,7 @@ class Incidencia(models.Model):
         return self.lugar.__str__() + ' ' + self.get_estado_display() + ' ' + self.created_at.strftime('%Y-%m-%d %H:%M')
 
 class Respuesta(models.Model):
-    incidencia = models.ForeignKey(Incidencia, on_delete=models.CASCADE, related_name='respuestas')
+    incidencia = models.ForeignKey(Incidencia, on_delete=models.CASCADE, related_name='respuestas', verbose_name='respuestas')
     texto = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

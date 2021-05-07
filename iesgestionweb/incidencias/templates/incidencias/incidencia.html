@@ -9,10 +9,15 @@
 
 {% bootstrap_form_errors form %}
 
-<form action="#" method="post" class="">
+<form action="#" method="post" id="nueva-incidencia">
     {% csrf_token %}
-    {% bootstrap_form form layout='inline' %}
-    {% bootstrap_button 'Crear incidencia' %}
+    {% bootstrap_form form layout='horizontal' %}
+
+    <div class="mb-3 row">
+      <label class="col-md-3 col-form-label" for="id_texto"></label>
+      <div class="col-md-9">{% bootstrap_button 'Crear incidencia' %}</div>
+    </div>
+
 </form>
 
 {% endblock %}

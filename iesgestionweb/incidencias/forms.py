@@ -1,5 +1,5 @@
 from django import forms
-from .models import Lugar, Acceso
+from .models import Lugar, Acceso, Incidencia
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -12,10 +12,17 @@ def validate_pass(value):
             params={'value': value},
         )
 
-class IncidenciaForm(forms.Form):
-    secreto = forms.CharField(label='pass',
+class IncidenciaForm(forms.ModelForm):
+    secreto = forms.CharField(label='Contraseña',
                     widget=forms.TextInput(attrs={'placeholder': 'Secreto...'}),
                     validators=[validate_pass]
             )
-    lugar = forms.ModelChoiceField(queryset=Lugar.objects.all(), empty_label="(Selecciona aula)")
-    texto = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        model = Incidencia
+        fields = ['lugar', 'texto']
+        labels = {
+            'lugar': 'Aula',
+            'texto': 'Texto',
+            'secreto': 'Contraseña'
+        }

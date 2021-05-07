@@ -11,7 +11,7 @@ admin.site.register(Respuesta)
 
 class RespuestaInline(admin.TabularInline):
     model = Respuesta
-    extra = 1
+    extra = 0
 
 
 class IncidenciaAdmin(admin.ModelAdmin):
