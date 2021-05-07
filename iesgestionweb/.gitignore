@@ -1,2 +1,2 @@
 *.pyc
-iesgestionweb/settings/secrets.json
+**/secrets.json
