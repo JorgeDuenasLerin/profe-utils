@@ -9,3 +9,4 @@ print(config)
 ALLOWED_HOSTS = ['localhost']
 DEBUG = False
 DATABASES = config["databases"]
+SECRET_KEY = = config["secret"]
