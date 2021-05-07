@@ -28,13 +28,19 @@
 </form>
 --->
 {% if filter %}
-    <form action="" method="get" class="form form-inline">
+    <form action="" method="get" class="form form-incidencias">
       <div class="form-floating">
-        {% bootstrap_form filter.form layout='inline' %}
-        {% bootstrap_button 'Ver incidencias' %}
-        <a type="button" class="btn btn-success" href={% url 'incidencias:nueva-incidencia' %}>
-          Nueva incidencia
-        </a>
+        {% bootstrap_form filter.form layout='horizontal' %}
+
+        <div class="mb-3 row">
+          <label class="col-md-3 col-form-label" for="id_texto"></label>
+          <div class="col-md-9">
+            {% bootstrap_button 'Ver incidencias' %}
+            <a type="button" class="btn btn-success" href={% url 'incidencias:nueva-incidencia' %}>
+              Nueva incidencia
+            </a>
+          </div>
+        </div>
       </div>
     </form>
 
