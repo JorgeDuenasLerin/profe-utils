@@ -1,5 +1,5 @@
 #!/bin/bash
-
+git pull
 
 cp manage.py /var/www/iesgestionweb/
 cp -r iesgestionweb/ /var/www/iesgestionweb/
