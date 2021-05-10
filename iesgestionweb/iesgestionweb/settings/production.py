@@ -1,12 +1,10 @@
 from .base import *
 import json
 
-with open(BASE_DIR / 'iesgestionweb/settings/secrets.json') as f:
+with open(BASE_DIR / 'secrets.json') as f:
     config = json.load(f)
 
-print(config)
-
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'iesgestionweb.duenaslerin.com']
 DEBUG = False
 DATABASES = config["databases"]
 SECRET_KEY = config["secret"]
