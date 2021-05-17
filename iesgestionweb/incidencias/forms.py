@@ -14,7 +14,7 @@ def validate_pass(value):
 
 class IncidenciaForm(forms.ModelForm):
     secreto = forms.CharField(label='Contraseña',
-                    widget=forms.TextInput(attrs={'placeholder': 'Secreto...'}),
+                    widget=forms.PasswordInput(attrs={'placeholder': 'Secreto...'}),
                     validators=[validate_pass]
             )
 

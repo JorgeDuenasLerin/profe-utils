@@ -18,7 +18,7 @@ class IncidenciaFilter(django_filters.FilterSet):
 
 
 class IncidenciaTable(tables.Table):
-    respuesta = tables.Column(accessor='respuestas.all')
+    respuesta = tables.Column(accessor='respuestas.all', order_by='updated_at')
 
     def render_respuesta(self, value, record):
         text = ""
