@@ -5,12 +5,13 @@ if [ -z "$1" ]
     echo "No secret.json"
   exit
 fi
-"""
 
-source
-collectstatic
+# TODO:
+#source
+#cp -> secrets
+#collectstatic
 
-"""
+
 secrets=$1
 
 git pull
