@@ -1,5 +1,4 @@
-
-<iframe id="incidencias" src="https://iesgestionweb.duenaslerin.com/incidencias/" title="Gestión de incidencias"></iframe>
+<iframe id="incidencias"  scrolling="no" src="https://iesgestionweb.duenaslerin.com/incidencias/" title="Gestión de incidencias"></iframe>
 
 <script>
 // Selecting the iframe element
@@ -12,14 +11,14 @@ frame.onload = function()
 {
   // set the height of the iframe as
   // the height of the iframe content
-  frame.style.height =
-  w.offsetHeight + 'px';
+  frame.style.height =  w.offsetHeight + 'px'
 
 
   // set the width of the iframe as the
   // width of the iframe content
-  frame.style.width  =
-  w.offsetWidth+'px';
+  frame.style.width  =  w.offsetWidth+'px'
 
+  frame.style.border = "none"
+  frame.style.overflowX = "hidden"
 }
 </script>
