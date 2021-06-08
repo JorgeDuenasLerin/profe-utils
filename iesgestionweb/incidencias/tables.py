@@ -1,5 +1,6 @@
 import django_tables2 as tables
 import django_filters
+from django.utils import timezone
 
 from django.db import models
 from django import forms
@@ -23,7 +24,7 @@ class IncidenciaTable(tables.Table):
     def render_respuesta(self, value, record):
         text = ""
         for r in value:
-            text += r.created_at.strftime('%Y-%m-%d %H:%M') + " - " + r.texto + "<br>"
+            text += timezone.localtime(r.created_at).strftime('%Y-%m-%d %H:%M') + " - " + r.texto + "<br>"
         return format_html(text)
 
     class Meta:

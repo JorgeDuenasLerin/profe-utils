@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-# Create your models here.
+from django.utils import timezone
 
 class Acceso(models.Model):
     clave = models.CharField(max_length=200)
@@ -31,7 +31,7 @@ class Incidencia(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.lugar.__str__() + ' ' + self.get_estado_display() + ' ' + self.created_at.strftime('%Y-%m-%d %H:%M')
+        return self.lugar.__str__() + ' ' + self.get_estado_display() + ' ' + timezone.localtime(self.created_at).strftime('%Y-%m-%d %H:%M')
 
 class Respuesta(models.Model):
     incidencia = models.ForeignKey(Incidencia, on_delete=models.CASCADE, related_name='respuestas', verbose_name='respuestas')
@@ -40,4 +40,4 @@ class Respuesta(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.incidencia.__str__() + ' - Respuesta ' + self.updated_at.strftime('%Y-%m-%d %H:%M')
+        return self.incidencia.__str__() + ' - Respuesta ' + timezone.localtime(self.updated_at).strftime('%Y-%m-%d %H:%M')
