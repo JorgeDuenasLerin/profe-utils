@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-IP=$(cat test.txt)
-PASS="PassWordAquí"
+IP=$(cat $1)
+PASS="${AUTOBASHPASS}"
 
 for con in $IP; do
   echo $con
