@@ -1,0 +1,7 @@
+Manual config punto acceso
+
+- Contraseña la de admin del año 2021-2022
+- Operation mode: Access Point
+- Network: LAN estática
+  - 172.26.AULA.254/16
+  - 172.26.172.27
