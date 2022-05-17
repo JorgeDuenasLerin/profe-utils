@@ -1,0 +1,7 @@
+# última en mayo 2022
+FROM python:3.10.4-alpine
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /usr/src/app
