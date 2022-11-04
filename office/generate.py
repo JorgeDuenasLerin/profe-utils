@@ -25,7 +25,7 @@ data = pd.read_csv(args.ficheroAlumnos, keep_default_na=False)
 data['Apellido1'] = data['Apellido1'].str.replace(" ","") 
 data['Apellido2'] = data['Apellido2'].str.replace(" ","") 
 data['Nombre'] = data['Nombre'].str.replace(" ","") 
-data['Ciclo'] = data['Ciclo'].str.replace(" ","") 
+data['Ciclo'] = data['Grupo'].str.replace(" ","") 
 data['Turno'] = data['Turno'].str.replace(" ","")
 
 data['Apellido'] = data['Apellido1'] + ' ' + data['Apellido2']
@@ -37,7 +37,7 @@ data['Nombre para mostrar'] = data['Nombre para mostrar'].str.strip()
 
 # Dirección de correo electrónico alternativa
 # tutor@email.com
-data['Dirección de correo electrónico alternativa'] = args.tutor
+data['Dirección de correo electrónico alternativa'] = data['Correo alternativo'] #args.tutor
 
 # Puesto,Departamento,Número del trabajo,Teléfono de la oficina,Teléfono móvil,Fax,Dirección de correo electrónico alternativa,Dirección,Ciudad,Estado o provincia,Código postal,País o región
 # puesto,departamento,9166666666,9166666666,9166666666,9166666666,tutor@email.com,Caoba 1,Madrid,Madrid,28000,España
