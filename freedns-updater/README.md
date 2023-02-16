@@ -4,19 +4,8 @@ El router DIGI que tenemos es muy malo, se queda colgado y es incapaz de actuali
 
 Aquí un cliente para freedns.afraid.org
 
-## From https://www.ipify.org/
-
-Request library:
+## Cron
 
 ```
-pip3 install requests
+* * * * * $(cd /home/jorge/profe-utils/freedns-updater/;python3 update-afraid.py > last_execution.txt)
 ```
-
-Example:
-```
-from requests import get
-
-ip = get('https://api.ipify.org').text
-print('My public IP address is: {}'.format(ip))
-```
-

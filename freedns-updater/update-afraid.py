@@ -43,5 +43,9 @@ if current_ip != last_ip:
         }
     )
     print(req.data)
+    print("Actualizando última ip")
+    with open(IP_FILE, 'w') as ipfile:
+        ipfile.write(current_ip)
+
 else:
     print("Sin cambio...")
