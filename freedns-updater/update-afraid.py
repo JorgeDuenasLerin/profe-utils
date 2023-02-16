@@ -9,7 +9,7 @@ from requests import get
 IP_FILE='ip.txt'
 CREDENTIAL_FILE='credentials.real.json'
 
-if not os.path.isfile(IP_FILE):
+if not os.path.isfile(CREDENTIAL_FILE):
     print("Crea el fichero de credenciales real.")
     exit()
 
@@ -27,19 +27,21 @@ current_ip=get('https://api.ipify.org').text
          
 if current_ip != last_ip:
     print("Actualizando!")
-    f = open('credentials.json')
+    f = open(CREDENTIAL_FILE)
     credential = json.load(f)
     http = urllib3.PoolManager()
     headerAuth = urllib3.util.make_headers(basic_auth=f"{credential['username']}:{credential['password']}")
     req = http.request(
         'GET',
-        "http://freedns.afraid.org/nic/update",
+        "http://sync.afraid.org/u/",
         headers=headerAuth,
         fields={
-            'hostname': credential['hostname'],
-            'myip': current_ip
+            'u': credential['username'],
+            'p': credential['password'],
+            'h': credential['hostname'],
+            'ip': current_ip
         }
     )
     print(req.data)
 else:
-    print("Sin cambios...")
+    print("Sin cambio...")
