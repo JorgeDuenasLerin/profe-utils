@@ -9,6 +9,9 @@ import dns.resolver
 
 IP_FILE='ip.txt'
 CREDENTIAL_FILE='credentials.real.json'
+IP_SERVICE='https://api.ipify.org'
+DDNS_DIR='afraid.org'
+DDNS_UPDATE_URL="http://sync.afraid.org/u/"
 
 """
 Credenciales
@@ -25,7 +28,7 @@ credential = json.load(f)
 if not os.path.isfile(IP_FILE):
     print("Primera ejecución")
     with open(IP_FILE, 'w') as ipfile:
-        ip=get('https://api.ipify.org').text
+        ip=get(IP_SERVICE).text
         ipfile.write(ip)
 
 last_ip=None
@@ -35,10 +38,10 @@ with open(IP_FILE, 'r') as ipfile:
 """
 IP actual, IP actual en el DNS
 """
-current_ip=get('https://api.ipify.org').text
+current_ip=get(IP_SERVICE).text
 
 dns.resolver.default_resolver = dns.resolver.Resolver(configure=False)
-dns.resolver.default_resolver.nameservers = [socket.gethostbyname('afraid.org')]
+dns.resolver.default_resolver.nameservers = [socket.gethostbyname(DDNS_DIR)]
 answers = dns.resolver.resolve(credential['hostname'], 'A')
 resolved_ip = str(answers[0])
 print('Resolved:', resolved_ip)
@@ -51,7 +54,7 @@ if current_ip != last_ip or current_ip != resolved_ip:
     headerAuth = urllib3.util.make_headers(basic_auth=f"{credential['username']}:{credential['password']}")
     req = http.request(
         'GET',
-        "http://sync.afraid.org/u/",
+        DDNS_UPDATE_URL,
         headers=headerAuth,
         fields={
             'u': credential['username'],
