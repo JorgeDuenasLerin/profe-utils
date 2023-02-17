@@ -4,6 +4,11 @@ El router DIGI que tenemos es muy malo, se queda colgado y es incapaz de actuali
 
 Aquí un cliente para freedns.afraid.org
 
+Install:
+```
+sudo apt-get install python3-dnspython
+```
+
 ## Cron
 
 ```
